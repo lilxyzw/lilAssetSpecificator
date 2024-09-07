@@ -1,0 +1,8 @@
+{
+  "name": "jp.lilxyzw.specificator",
+  "version": "1.0.0",
+  "displayName": "lilAssetSpecificator",
+  "description": "Generate product descriptions.",
+  "unity": "2022.3",
+  "license": "MIT"
+}

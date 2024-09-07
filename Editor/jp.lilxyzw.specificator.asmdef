@@ -1,0 +1,25 @@
+{
+    "name": "jp.lilxyzw.specificator",
+    "rootNamespace": "jp.lilxyzw.specificator",
+    "references": [
+        "VRC.SDKBase",
+        "VRC.SDKBase.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.vrchat.avatars",
+            "expression": "",
+            "define": "LIL_VRCSDK_AVATARS"
+        }
+    ],
+    "noEngineReferences": false
+}
