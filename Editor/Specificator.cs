@@ -478,7 +478,9 @@ namespace jp.lilxyzw.specificator
 
         private static void GetReferenceFromObject(HashSet<Object> scaned, Object obj)
         {
-            if(!obj || scaned.Contains(obj)) return;
+            if(!obj || scaned.Contains(obj) ||
+                obj is GameObject go && IsEditorOnly(go) ||
+                obj is Component c && IsEditorOnly(c)) return;
             scaned.Add(obj);
             if(obj is GameObject ||
                 // Skip - Component
@@ -506,6 +508,23 @@ namespace jp.lilxyzw.specificator
                     GetReferenceFromObject(scaned, iter.objectReferenceValue);
                 }
             }
+        }
+
+        private static bool IsEditorOnly(Transform obj)
+        {
+            if(obj.tag == "EditorOnly") return true;
+            if(obj.transform.parent == null) return false;
+            return IsEditorOnly(obj.transform.parent);
+        }
+
+        private static bool IsEditorOnly(GameObject obj)
+        {
+            return IsEditorOnly(obj.transform);
+        }
+
+        private static bool IsEditorOnly(Component com)
+        {
+            return IsEditorOnly(com.transform);
         }
     }
 
