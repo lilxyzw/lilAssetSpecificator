@@ -237,8 +237,8 @@ namespace jp.lilxyzw.specificator
             if(obj is GameObject gameObject)
             {
                 GetReferenceFromObject(scaned, gameObject.GetComponentsInChildren<Component>(true));
-                polyCount += gameObject.GetComponentsInChildren<SkinnedMeshRenderer>(true).Select(r => r.sharedMesh).Where(m => m).Sum(m => m.triangles.Length / 3);
-                polyCount += gameObject.GetComponentsInChildren<MeshFilter>(true).Select(r => r.sharedMesh).Where(m => m).Sum(m => m.triangles.Length / 3);
+                polyCount += gameObject.GetComponentsInChildren<SkinnedMeshRenderer>(true).Where(s => !IsEditorOnly(s)).Select(r => r.sharedMesh).Where(m => m).Sum(m => m.triangles.Length / 3);
+                polyCount += gameObject.GetComponentsInChildren<MeshFilter>(true).Where(s => !IsEditorOnly(s)).Select(r => r.sharedMesh).Where(m => m).Sum(m => m.triangles.Length / 3);
 
                 #if LIL_VRCSDK_AVATARS
                 isAvatar = gameObject.GetComponent<VRC_AvatarDescriptor>();
