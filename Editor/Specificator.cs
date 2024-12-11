@@ -423,7 +423,11 @@ namespace jp.lilxyzw.specificator
 
                     try
                     {
+                        #if LIL_VRCSDK_AVATARS_3_7_5
+                        SDKPerformanceDisplay.GetSDKPerformanceInfoText(stats, category, out var text, out var errorText, out var level);
+                        #else
                         SDKPerformanceDisplay.GetSDKPerformanceInfoText(stats, category, out var text, out var level);
+                        #endif
                         if(string.IsNullOrEmpty(text)) continue;
                         var ind = text.IndexOf(" (Recommended");
                         if(ind > 0) text = text.Substring(0,ind);
